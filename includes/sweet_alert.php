@@ -219,4 +219,55 @@
             }
         });
     }
+
+
+    //ADMIN 
+    //Delete data
+    function deleteData(name) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Hapus ' + name + '?',
+            text: 'Konfirmasi Password',
+            input: 'password',
+            showCloseButton: true,
+            showCancelButton: true,
+            cancelButtonText: 'Batal',
+            confirmButtonText: 'Confirm',
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('confirmPassword').value = result.value;
+                document.getElementById('deleteData').submit();
+            }
+        });
+    }
+
+    //Jika password salah saat delete data
+    function deleteError() {
+        Swal.fire({
+            icon: "error",
+            title: "Password Salah",
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true
+        }).then((result) => {
+            if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
+                history.back();
+            }
+        });
+    }
+
+    //Jika data berhasil dihapus (code masih error)
+    function deleteSuccess() {
+        Swal.fire({
+            icon: "success",
+            title: "Berhasil Menghapus",
+            showConfirmButton: false,
+            timer: 1000,
+            timerProgressBar: true
+        }).then((result) => {
+            if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
+                location.href = "/project-sea/";
+            }
+        });
+    }
 </script>

@@ -207,7 +207,7 @@ a:hover {
     text-decoration: underline;
 }
 
-.create-circle {
+.side-button {
     width: 100%;
     margin-bottom: 8px;
 }
@@ -232,6 +232,21 @@ a:hover {
     cursor: pointer;
     color: var(--primary-50);
     background-color: var(--primary-600);
+}
+
+.red {
+    padding: 8px 12px;
+    background-color: var(--orange-600);
+    border-radius: 20px;
+    border: 1px solid var(--accent-300);
+    width: 100%;
+    font-weight: 600;
+    color: white;
+}
+
+.red:hover {
+    cursor: pointer;
+    background-color: var(--orange-700);
 }
 
 .color-button {

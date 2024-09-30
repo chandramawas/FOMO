@@ -9,7 +9,7 @@ RewriteRule ^post/([0-9]+)$ pages/post.php?p=$1 [L]
 RewriteRule ^circle/([0-9]+)$ pages/circle.php?c=$1 [L]
 
 # /pages/user.php?p=user menjadi /user
-RewriteRule ^([a-zA-Z0-9_-]+)$ pages/user.php?u=$1 [L,QSA]
+RewriteRule ^u/([a-zA-Z0-9_.-]+)$ pages/user.php?u=$1 [L,QSA]
 
 # /pages/search.php?s=kucing menjadi /search/?s=kucing
 RewriteRule ^search/$ pages/search.php [QSA,L]

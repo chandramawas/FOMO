@@ -94,33 +94,73 @@ $topUsers = $result->fetch_all(MYSQLI_ASSOC);
 <div class="side-bar">
     <?php if (!isset($_GET['u']) || $_GET['u'] !== $_SESSION['username']) {
         ?>
-                <div class="container">
-                    <h4>Akun Saya</h4>
-                    <a href="/project-sea/<?php echo $_SESSION['username'] ?>">
-                        <div class="user">
-                            <img src="/project-sea/images/profile-blue.png" alt="Profile">
-                            <h3><?php echo $_SESSION['username'] ?></h3>
-                        </div>
-                    </a>
+        <div class="container">
+            <h4>Akun Saya</h4>
+            <a href="/project-sea/u/<?php echo $_SESSION['username'] ?>">
+                <div class="user">
+                    <img src="/project-sea/images/profile-blue.png" alt="Profile">
+                    <h3><?php echo $_SESSION['username'] ?></h3>
                 </div>
+            </a>
+        </div>
+    <?php } ?>
+
+    <?php if ($_SESSION['roles'] === 'admin') { ?>
+        <?php if (isset($_GET['u']) && $_GET['u'] !== $_SESSION['username']) { ?>
+            <div class="side-button">
+                <button class="red" onclick="deleteData('<?php echo $_GET['u'] ?>')">Hapus Pengguna</button>
+                <form id="deleteData" action="" method="POST" style="display:none;">
+                    <input type="hidden" name="form_type" value="deleteUser">
+                    <input type="hidden" name="id" value="<?php echo $_GET['u'] ?>">
+                    <input type="hidden" name="confirmPassword" id="confirmPassword">
+                </form>
+            </div>
+        <?php } ?>
+        <?php if (isset($_GET['c'])) {
+            $stmt = $conn->prepare('SELECT name FROM communities WHERE id = ?');
+            $stmt->bind_param('i', $_GET['c']);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            $cname = $row['name'];
+            ?>
+            <div class="side-button">
+                <button class="red" onclick="deleteData('<?php echo $cname ?>')">Hapus Circle</button>
+                <form id="deleteData" action="" method="POST" style="display:none;">
+                    <input type="hidden" name="form_type" value="deleteCircle">
+                    <input type="hidden" name="id" value="<?php echo $_GET['c'] ?>">
+                    <input type="hidden" name="confirmPassword" id="confirmPassword">
+                </form>
+            </div>
+        <?php } ?>
+        <?php if (isset($_GET['p'])) { ?>
+            <div class="side-button">
+                <button class="red" onclick="deleteData('Post')">Hapus Post</button>
+                <form id="deleteData" action="" method="POST" style="display:none;">
+                    <input type="hidden" name="form_type" value="deletePost">
+                    <input type="hidden" name="id" value="<?php echo $_GET['p'] ?>">
+                    <input type="hidden" name="confirmPassword" id="confirmPassword">
+                </form>
+            </div>
+        <?php } ?>
     <?php } ?>
 
     <?php if (empty($topPosts)): ?>
     <?php else: ?>
-                <div class="container">
-                    <h4>Masalah Rame-Rame</h4>
-                    <?php foreach ($topPosts as $topPost): ?>
-                                <a href="/project-sea/post/<?php echo $topPost['id'] ?>">
-                                    <div class="side-content">
-                                        <h5><?php echo $topPost['title'] ?></h5>
-                                        <p><?php echo $topPost['total_votes'] ?> aura • <?php echo $topPost['total_comments'] ?> komentar</p>
-                                    </div>
-                                </a>
-                    <?php endforeach ?>
-                </div>
+        <div class="container">
+            <h4>Masalah Rame-Rame</h4>
+            <?php foreach ($topPosts as $topPost): ?>
+                <a href="/project-sea/post/<?php echo $topPost['id'] ?>">
+                    <div class="side-content">
+                        <h5><?php echo $topPost['title'] ?></h5>
+                        <p><?php echo $topPost['total_votes'] ?> aura • <?php echo $topPost['total_comments'] ?> komentar</p>
+                    </div>
+                </a>
+            <?php endforeach ?>
+        </div>
     <?php endif ?>
 
-    <div class="create-circle">
+    <div class="side-button">
         <button class="hover-blue" onclick="createCircle()">Buat Circle Baru</button>
         <form id="circleForm" action="" method="POST" style="display:none;">
             <input type="hidden" name="form_type" value="createCircle">
@@ -131,32 +171,32 @@ $topUsers = $result->fetch_all(MYSQLI_ASSOC);
 
     <?php if (empty($topCircles)): ?>
     <?php else: ?>
-                <div class="container">
-                    <h4>Circle Paling Berisik</h4>
-                    <?php foreach ($topCircles as $topCircle): ?>
-                                <a href="/project-sea/circle/<?php echo $topCircle['id'] ?>">
-                                    <div class="side-content">
-                                        <h5><?php echo $topCircle['name'] ?></h5>
-                                        <p><?php echo $topCircle['total_posts'] ?> Postingan</p>
-                                    </div>
-                                </a>
-                    <?php endforeach ?>
-                </div>
+        <div class="container">
+            <h4>Circle Paling Berisik</h4>
+            <?php foreach ($topCircles as $topCircle): ?>
+                <a href="/project-sea/circle/<?php echo $topCircle['id'] ?>">
+                    <div class="side-content">
+                        <h5><?php echo $topCircle['name'] ?></h5>
+                        <p><?php echo $topCircle['total_posts'] ?> Postingan</p>
+                    </div>
+                </a>
+            <?php endforeach ?>
+        </div>
     <?php endif ?>
 
     <?php if (empty($topUsers)): ?>
     <?php else: ?>
-                <div class="container">
-                    <h4>Orang Paling FOMO</h4>
-                    <?php foreach ($topUsers as $topUser): ?>
-                                <a href="/project-sea/<?php echo $topUser['username'] ?>">
-                                    <div class="side-content">
-                                        <h5><?php echo $topUser['username'] ?></h5>
-                                        <p><?php echo $topUser['total_posts'] ?> postingan • <?php echo $topUser['total_votes'] ?> aura</p>
-                                    </div>
-                                </a>
-                    <?php endforeach ?>
-                </div>
+        <div class="container">
+            <h4>Orang Paling FOMO</h4>
+            <?php foreach ($topUsers as $topUser): ?>
+                <a href="/project-sea/u/<?php echo $topUser['username'] ?>">
+                    <div class="side-content">
+                        <h5><?php echo $topUser['username'] ?></h5>
+                        <p><?php echo $topUser['total_posts'] ?> postingan • <?php echo $topUser['total_votes'] ?> aura</p>
+                    </div>
+                </a>
+            <?php endforeach ?>
+        </div>
     <?php endif ?>
 </div>
 
@@ -184,6 +224,63 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $c_id = $row['id'];
 
         echo "<script>successCircle('$c_id')</script>";
+    } elseif ($formType === "deleteUser") {
+        $id = $_POST["id"];
+        $password = $_POST["confirmPassword"];
+
+        $stmt = $conn->prepare('SELECT password FROM users WHERE id = ?');
+        $stmt->bind_param('i', $_SESSION['user_id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        if (password_verify($password, $row['password'])) {
+            $stmt = $conn->prepare('DELETE FROM users WHERE username = ?');
+            $stmt->bind_param('s', $id);
+            $stmt->execute();
+
+            echo '<script>alert("Berhasil Menghapus User ' . $id . '"); location.href = "/project-sea/";</script>';
+        } else {
+            echo '<script>deleteError()</script>';
+        }
+    } elseif ($formType === "deleteCircle") {
+        $id = $_POST["id"];
+        $password = $_POST["confirmPassword"];
+
+        $stmt = $conn->prepare('SELECT password FROM users WHERE id = ?');
+        $stmt->bind_param('i', $_SESSION['user_id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        if (password_verify($password, $row['password'])) {
+            $stmt = $conn->prepare('DELETE FROM communities WHERE id = ?');
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+
+            echo '<script>alert("Berhasil Menghapus Circle ' . $cname . '"); location.href = "/project-sea/";</script>';
+        } else {
+            echo '<script>deleteError()</script>';
+        }
+    } elseif ($formType === "deletePost") {
+        $id = $_POST["id"];
+        $password = $_POST["confirmPassword"];
+
+        $stmt = $conn->prepare('SELECT password FROM users WHERE id = ?');
+        $stmt->bind_param('i', $_SESSION['user_id']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+
+        if (password_verify($password, $row['password'])) {
+            $stmt = $conn->prepare('DELETE FROM posts WHERE id = ?');
+            $stmt->bind_param('i', $id);
+            $stmt->execute();
+
+            echo '<script>alert("Berhasil Menghapus Post"); location.href = "/project-sea/";</script>';
+        } else {
+            echo '<script>deleteError()</script>';
+        }
     }
 }
 ?>

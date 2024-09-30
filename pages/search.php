@@ -169,7 +169,7 @@ else {
                 <h6>User tidak ditemukan.</h6>
             <?php else: ?>
                 <?php foreach ($users as $user): ?>
-                    <a href="/project-sea/<?php echo $user['username'] ?>">
+                    <a href="/project-sea/u/<?php echo $user['username'] ?>">
                         <div class="search-container">
                             <h3><?php echo $user['username'] ?></h3>
                             <p>Sejak <?php echo $user['date'] ?> • <?php echo $user['total_posts'] ?> postingan •
@@ -190,7 +190,7 @@ else {
                             <a href="/project-sea/circle/<?php echo $post['communityId'] ?>">
                                 <button class="hover-underline">c/<?php echo $post['community'] ?></button>
                             </a>
-                            <a href="/project-sea/<?php echo $post['username'] ?>">
+                            <a href="/project-sea/u/<?php echo $post['username'] ?>">
                                 <h5>u/<?php echo $post['username'] ?>
                             </a> &#x2022; <h6> <?php echo timestamp($post['createdAt']) ?></h6>
                             </h5>

@@ -47,8 +47,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/sweet_alert.php"
                             required>
                         <img id="togglePassword" src="/project-sea/images/eyes-closed.png" alt="Toggle Password">
                     </div>
-                    <p style="text-align: right; margin-bottom: 16px;"><a
-                            href="/project-sea/forgotpassword/">Lupa Password?</a></p>
+                    <p style="text-align: right; margin-bottom: 16px;"><a href="/project-sea/forgotpassword/">Lupa
+                            Password?</a></p>
                     <button type="submit" class="color-button">Masuk</button>
                 </form>
             </div>
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
 
     //Mencari data users di database sesuai dengan username yang di input 
-    $stmt = $conn->prepare(query: " SELECT users.* FROM users WHERE username = ? ");
+    $stmt = $conn->prepare(query: " SELECT * FROM users WHERE username = ? ");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -83,10 +83,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             //Mengambil data dari database untuk SESSION
             $_SESSION['user_id'] = $row['id'];
             $_SESSION['username'] = $row['username'];
+            $_SESSION['roles'] = $row['roles'];
 
             ?>
-                        <script>location.href = "/project-sea/";</script>
-                        <?php
+            <script>location.href = "/project-sea/";</script>
+            <?php
         }
 
         //Jika password TIDAK cocok
