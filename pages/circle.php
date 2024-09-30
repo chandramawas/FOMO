@@ -98,15 +98,15 @@ if (isset($_GET['c'])) {
     //Jika data TIDAK ditemukan di database
     else {
         ?>
-        <script>alert("ID Circle tidak ditemukan."); location.href = "/project-sea/"</script>
-        <?php
+                        <script>alert("ID Circle tidak ditemukan."); location.href = "/project-sea/"</script>
+                        <?php
     }
 }
 //Jika TIDAK ada kode circle " ?c=#id "
 else {
     ?>
-    <script>location.href = "/project-sea/";</script>
-    <?php
+            <script>location.href = "/project-sea/";</script>
+            <?php
 }
 ?>
 
@@ -139,47 +139,47 @@ else {
             </div>
             <div class="content-circle">
                 <?php if (empty($posts)): ?>
-                    <h6>Circle belum ada post.</h6>
+                            <h6>Circle belum ada post.</h6>
                 <?php else: ?>
-                    <?php foreach ($posts as $post): ?>
-                        <div class="container">
-                            <div class="top">
-                                <a href="/project-sea/pages/user.php?u=<?php echo $post['username'] ?>">
-                                    <h5>u/<?php echo $post['username'] ?>
-                                </a> &#x2022; <h6><?php echo timestamp($post['createdAt']) ?>
-                                </h6>
-                                </h5>
-                            </div>
-                            <a href="/project-sea/pages/post.php?p=<?php echo $post['id'] ?>">
-                                <div class="mid">
-                                    <h2><?php echo $post['title'] ?></h2>
-                                </div>
-                            </a>
-                            <div class="bot">
-                                <div class="vote">
-                                    <form id="voteForm" action="/project-sea/config/vote.php" method="post">
-                                        <input type="hidden" name="postId" value="<?php echo $post['id'] ?>">
-                                        <input type="hidden" name="userId" value="<?php echo $_SESSION['user_id'] ?>">
-                                        <button type="submit" name="vote" value="1" id="upvote"
-                                            class="<?php echo ($post['user_vote'] == 1) ? 'active' : ''; ?>"></button>
-                                        <p><?php echo $post['total_votes'] ?></p>
-                                        <button type="submit" name="vote" value="-1" id="downvote"
-                                            class="<?php echo ($post['user_vote'] == -1) ? 'active' : ''; ?>"></button>
-                                    </form>
-                                </div>
-                                <div class="vote">
-                                    <img src="/project-sea/images/comment.png" alt="Comment">
-                                    <p><?php echo $post['total_comments'] ?> komentar</p>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach ?>
+                            <?php foreach ($posts as $post): ?>
+                                        <div class="container">
+                                            <div class="top">
+                                                <a href="/project-sea/<?php echo $post['username'] ?>">
+                                                    <h5>u/<?php echo $post['username'] ?>
+                                                </a> &#x2022; <h6><?php echo timestamp($post['createdAt']) ?>
+                                                </h6>
+                                                </h5>
+                                            </div>
+                                            <a href="/project-sea/post/<?php echo $post['id'] ?>">
+                                                <div class="mid">
+                                                    <h2><?php echo $post['title'] ?></h2>
+                                                </div>
+                                            </a>
+                                            <div class="bot">
+                                                <div class="vote">
+                                                    <form id="voteForm" action="/project-sea/config/vote.php" method="post">
+                                                        <input type="hidden" name="postId" value="<?php echo $post['id'] ?>">
+                                                        <input type="hidden" name="userId" value="<?php echo $_SESSION['user_id'] ?>">
+                                                        <button type="submit" name="vote" value="1" id="upvote"
+                                                            class="<?php echo ($post['user_vote'] == 1) ? 'active' : ''; ?>"></button>
+                                                        <p><?php echo $post['total_votes'] ?></p>
+                                                        <button type="submit" name="vote" value="-1" id="downvote"
+                                                            class="<?php echo ($post['user_vote'] == -1) ? 'active' : ''; ?>"></button>
+                                                    </form>
+                                                </div>
+                                                <div class="vote">
+                                                    <img src="/project-sea/images/comment.png" alt="Comment">
+                                                    <p><?php echo $post['total_comments'] ?> komentar</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                            <?php endforeach ?>
                 <?php endif ?>
             </div>
             <div class="info">
                 <div class="info-container">
                     <h5>Pembuat</h5>
-                    <a href="/project-sea/pages/user.php?u=<?php echo $c_creator ?>">
+                    <a href="/project-sea/<?php echo $c_creator ?>">
                         <p><?php echo $c_creator ?></p>
                     </a>
                 </div>
@@ -220,7 +220,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute();
         $stmt->close();
 
-        echo "<script>window.location.href='/project-sea/pages/circle.php?c=$postCircleId'; </script>";
+        echo "<script>window.location.href='/project-sea/circle/$postCircleId'; </script>";
     }
 }
 ?>

@@ -182,7 +182,7 @@
             timerProgressBar: true
         }).then((result) => {
             if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
-                location.href = "/project-sea/pages/circle.php?c=" + id;
+                location.href = "/project-sea/circle/" + id;
             }
         });
     }

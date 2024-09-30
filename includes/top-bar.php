@@ -15,10 +15,9 @@ if (!isset($_SESSION['user_id'])) {
         </a>
     </div>
     <div class="search-bar">
-        <form action="/project-sea/pages/search.php" method="get">
-            <input type="text" name="search" id="search" placeholder="Cari..."
-                minlength="<?php echo MIN_SEARCH_LENGTH ?>"
-                value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : '' ?>" required>
+        <form action="/project-sea/search/" method="get">
+            <input type="text" name="s" id="search" placeholder="Cari..." minlength="<?php echo MIN_SEARCH_LENGTH ?>"
+                value="<?php echo isset($_GET['s']) ? htmlspecialchars($_GET['s']) : '' ?>" required>
         </form>
     </div>
     <div class="exit">

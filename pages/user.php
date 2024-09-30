@@ -140,13 +140,13 @@ else {
                     <?php foreach ($posts as $post): ?>
                         <div class="container">
                             <div class="top">
-                                <a href="/project-sea/pages/circle.php?c=<?php echo $post['communityId'] ?>">
+                                <a href="/project-sea/circle/<?php echo $post['communityId'] ?>">
                                     <h5>c/<?php echo $post['community'] ?>
                                 </a>&#x2022; <h6><?php echo timestamp($post['createdAt']) ?>
                                 </h6>
                                 </h5>
                             </div>
-                            <a href="/project-sea/pages/post.php?p=<?php echo $post['id'] ?>">
+                            <a href="/project-sea/post/<?php echo $post['id'] ?>">
                                 <div class="mid">
                                     <h2><?php echo $post['title'] ?></h2>
                                 </div>

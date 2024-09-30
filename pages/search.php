@@ -8,9 +8,10 @@ include $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/side-bar.php";
 ?>
 
 <?php
-//Jika ada kode " ?search=# "
-if (isset($_GET["search"])) {
-    $search = $_GET["search"];
+
+//Jika ada kode " ?s=# "
+if (isset($_GET["s"])) {
+    $search = $_GET["s"];
 
     //Query untuk circles
     $stmt = $conn->prepare("
@@ -111,11 +112,10 @@ if (isset($_GET["search"])) {
     $stmt->execute();
     $result = $stmt->get_result();
     $users = $result->fetch_all(MYSQLI_ASSOC);
-    $search = $_GET["search"];
-
+    $search = $_GET["s"];
 }
 
-//Jika ada kode " ?search=# "
+//Jika ada kode " ?s=# "
 else {
     ?>
     <script>location.href = "/project-sea/";</script>
@@ -152,7 +152,7 @@ else {
                 <h6>Circle tidak ditemukan.</h6>
             <?php else: ?>
                 <?php foreach ($circles as $circle): ?>
-                    <a href="/project-sea/pages/circle.php?c=<?php echo $circle['id'] ?>">
+                    <a href="/project-sea/circle/<?php echo $circle['id'] ?>">
                         <div class="search-container">
                             <h3><?php echo $circle['name'] ?></h3>
                             <p>Sejak <?php echo $circle['date'] ?> • <?php echo $circle['total_posts'] ?> postingan dari
@@ -169,7 +169,7 @@ else {
                 <h6>User tidak ditemukan.</h6>
             <?php else: ?>
                 <?php foreach ($users as $user): ?>
-                    <a href="/project-sea/pages/user.php?u=<?php echo $user['username'] ?>">
+                    <a href="/project-sea/<?php echo $user['username'] ?>">
                         <div class="search-container">
                             <h3><?php echo $user['username'] ?></h3>
                             <p>Sejak <?php echo $user['date'] ?> • <?php echo $user['total_posts'] ?> postingan •
@@ -187,15 +187,15 @@ else {
                 <?php foreach ($posts as $post): ?>
                     <div class=" container">
                         <div class="top">
-                            <a href="/project-sea/pages/circle.php?c=<?php echo $post['communityId'] ?>">
+                            <a href="/project-sea/circle/<?php echo $post['communityId'] ?>">
                                 <button class="hover-underline">c/<?php echo $post['community'] ?></button>
                             </a>
-                            <a href="/project-sea/pages/user.php?u=<?php echo $post['username'] ?>">
+                            <a href="/project-sea/<?php echo $post['username'] ?>">
                                 <h5>u/<?php echo $post['username'] ?>
                             </a> &#x2022; <h6> <?php echo timestamp($post['createdAt']) ?></h6>
                             </h5>
                         </div>
-                        <a href="/project-sea/pages/post.php?p=<?php echo $post['id'] ?>">
+                        <a href="/project-sea/post/<?php echo $post['id'] ?>">
                             <div class="mid">
                                 <h2><?php echo $post['title'] ?></h2>
                             </div>

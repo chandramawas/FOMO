@@ -80,8 +80,8 @@ if (isset($_GET["p"])) {
     //Jika id post ada di database
     else {
         ?>
-        <script>alert("Post tidak ditemukan."); location.href = "/project-sea/"</script>
-        <?php
+                        <script>alert("Post tidak ditemukan."); location.href = "/project-sea/"</script>
+                        <?php
     }
 
 }
@@ -89,8 +89,8 @@ if (isset($_GET["p"])) {
 //Jika TIDAK ada kode " ?p=#id "
 else {
     ?>
-    <script>location.href = "/project-sea/";</script>
-    <?php
+            <script>location.href = "/project-sea/";</script>
+            <?php
 }
 ?>
 
@@ -113,10 +113,10 @@ else {
     <div class="main">
         <div class="container">
             <div class="top">
-                <a href="/project-sea/pages/circle.php?c=<?php echo $p_communityId ?>">
+                <a href="/project-sea/circle/<?php echo $p_communityId ?>">
                     <button class="hover-underline">c/<?php echo $p_community ?></button>
                 </a>
-                <a href="/project-sea/pages/user.php?u=<?php echo $p_username ?>">
+                <a href="/project-sea/<?php echo $p_username ?>">
                     <h5>u/<?php echo $p_username ?>
                 </a> &#x2022; <h6> <?php echo $p_timestamp ?></h6>
                 </h5>
@@ -151,21 +151,21 @@ else {
         </div>
         <div class="comment">
             <?php if (empty($comments)): ?>
-                <h6>Belum ada komentar.</h6>
+                        <h6>Belum ada komentar.</h6>
             <?php else: ?>
-                <?php foreach ($comments as $comment): ?>
-                    <div class="container">
-                        <div class="top">
-                            <a href="/project-sea/pages/user.php?u=<?php echo $comment['username'] ?>">
-                                <h5>u/<?php echo $comment['username'] ?>
-                            </a> &#x2022; <h6> <?php echo timestamp($comment['createdAt']) ?></h6>
-                            </h5>
-                        </div>
-                        <div class="mid">
-                            <p><?php echo $comment['comment'] ?></p>
-                        </div>
-                    </div>
-                <?php endforeach ?>
+                        <?php foreach ($comments as $comment): ?>
+                                    <div class="container">
+                                        <div class="top">
+                                            <a href="/project-sea/<?php echo $comment['username'] ?>">
+                                                <h5>u/<?php echo $comment['username'] ?>
+                                            </a> &#x2022; <h6> <?php echo timestamp($comment['createdAt']) ?></h6>
+                                            </h5>
+                                        </div>
+                                        <div class="mid">
+                                            <p><?php echo $comment['comment'] ?></p>
+                                        </div>
+                                    </div>
+                        <?php endforeach ?>
             <?php endif ?>
         </div>
     </div>
@@ -186,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param('sii', $comment, $userId, $postId);
 
         if ($stmt->execute()) {
-            echo "<script>window.location.href='/project-sea/pages/post.php?p=$postId'; </script>";
+            echo "<script>window.location.href='/project-sea/post/$postId'; </script>";
         } else {
             echo "<script>alert('Failed to create comment!'); history.back();</script>";
         }

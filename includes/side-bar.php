@@ -94,30 +94,30 @@ $topUsers = $result->fetch_all(MYSQLI_ASSOC);
 <div class="side-bar">
     <?php if (!isset($_GET['u']) || $_GET['u'] !== $_SESSION['username']) {
         ?>
-        <div class="container">
-            <h4>Akun Saya</h4>
-            <a href="/project-sea/pages/user.php?u=<?php echo $_SESSION['username'] ?>">
-                <div class="user">
-                    <img src="/project-sea/images/profile-blue.png" alt="Profile">
-                    <h3><?php echo $_SESSION['username'] ?></h3>
+                <div class="container">
+                    <h4>Akun Saya</h4>
+                    <a href="/project-sea/<?php echo $_SESSION['username'] ?>">
+                        <div class="user">
+                            <img src="/project-sea/images/profile-blue.png" alt="Profile">
+                            <h3><?php echo $_SESSION['username'] ?></h3>
+                        </div>
+                    </a>
                 </div>
-            </a>
-        </div>
     <?php } ?>
 
     <?php if (empty($topPosts)): ?>
     <?php else: ?>
-        <div class="container">
-            <h4>Masalah Rame-Rame</h4>
-            <?php foreach ($topPosts as $topPost): ?>
-                <a href="/project-sea/pages/post.php?p=<?php echo $topPost['id'] ?>">
-                    <div class="side-content">
-                        <h5><?php echo $topPost['title'] ?></h5>
-                        <p><?php echo $topPost['total_votes'] ?> aura • <?php echo $topPost['total_comments'] ?> komentar</p>
-                    </div>
-                </a>
-            <?php endforeach ?>
-        </div>
+                <div class="container">
+                    <h4>Masalah Rame-Rame</h4>
+                    <?php foreach ($topPosts as $topPost): ?>
+                                <a href="/project-sea/post/<?php echo $topPost['id'] ?>">
+                                    <div class="side-content">
+                                        <h5><?php echo $topPost['title'] ?></h5>
+                                        <p><?php echo $topPost['total_votes'] ?> aura • <?php echo $topPost['total_comments'] ?> komentar</p>
+                                    </div>
+                                </a>
+                    <?php endforeach ?>
+                </div>
     <?php endif ?>
 
     <div class="create-circle">
@@ -131,32 +131,32 @@ $topUsers = $result->fetch_all(MYSQLI_ASSOC);
 
     <?php if (empty($topCircles)): ?>
     <?php else: ?>
-        <div class="container">
-            <h4>Circle Paling Berisik</h4>
-            <?php foreach ($topCircles as $topCircle): ?>
-                <a href="/project-sea/pages/circle.php?c=<?php echo $topCircle['id'] ?>">
-                    <div class="side-content">
-                        <h5><?php echo $topCircle['name'] ?></h5>
-                        <p><?php echo $topCircle['total_posts'] ?> Postingan</p>
-                    </div>
-                </a>
-            <?php endforeach ?>
-        </div>
+                <div class="container">
+                    <h4>Circle Paling Berisik</h4>
+                    <?php foreach ($topCircles as $topCircle): ?>
+                                <a href="/project-sea/circle/<?php echo $topCircle['id'] ?>">
+                                    <div class="side-content">
+                                        <h5><?php echo $topCircle['name'] ?></h5>
+                                        <p><?php echo $topCircle['total_posts'] ?> Postingan</p>
+                                    </div>
+                                </a>
+                    <?php endforeach ?>
+                </div>
     <?php endif ?>
 
     <?php if (empty($topUsers)): ?>
     <?php else: ?>
-        <div class="container">
-            <h4>Orang Paling FOMO</h4>
-            <?php foreach ($topUsers as $topUser): ?>
-                <a href="/project-sea/pages/user.php?u=<?php echo $topUser['username'] ?>">
-                    <div class="side-content">
-                        <h5><?php echo $topUser['username'] ?></h5>
-                        <p><?php echo $topUser['total_posts'] ?> postingan • <?php echo $topUser['total_votes'] ?> aura</p>
-                    </div>
-                </a>
-            <?php endforeach ?>
-        </div>
+                <div class="container">
+                    <h4>Orang Paling FOMO</h4>
+                    <?php foreach ($topUsers as $topUser): ?>
+                                <a href="/project-sea/<?php echo $topUser['username'] ?>">
+                                    <div class="side-content">
+                                        <h5><?php echo $topUser['username'] ?></h5>
+                                        <p><?php echo $topUser['total_posts'] ?> postingan • <?php echo $topUser['total_votes'] ?> aura</p>
+                                    </div>
+                                </a>
+                    <?php endforeach ?>
+                </div>
     <?php endif ?>
 </div>
 
