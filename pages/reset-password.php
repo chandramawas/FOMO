@@ -18,8 +18,8 @@ if (isset($_GET['token'])) {
 
     if ($result->num_rows == 0) {
         ?>
-        <script>alert("Token salah atau sudah kadaluarsa."); location.href = "/project-sea/pages/forgot-password.php";</script>
-        <?php
+                <script>alert("Token salah atau sudah kadaluarsa."); location.href = "/project-sea/forgotpassword/";</script>
+                <?php
     } else {
         $row = $result->fetch_assoc();
         $username = $row['username'];
@@ -28,8 +28,8 @@ if (isset($_GET['token'])) {
 } else {
     // Jika TIDAK ada, akan dialihkan ke halaman login
     ?>
-    <script>location.href = "/project-sea/pages/login.php";</script>
-    <?php
+        <script>location.href = "/project-sea/login/";</script>
+        <?php
 }
 ?>
 <!DOCTYPE html>

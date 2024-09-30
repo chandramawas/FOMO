@@ -32,7 +32,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/sweet_alert.php"
             <div class="form-container">
                 <form action="" method="POST">
                     <h2>Masuk</h2>
-                    <p style="margin-bottom: 12px;">Belum mempunyai akun? <a href="/project-sea/pages/signup.php">Buat
+                    <p style="margin-bottom: 12px;">Belum mempunyai akun? <a href="/project-sea/signup/">Buat
                             akun</a></p>
                     <div class="input-container">
                         <img class="icon" src="/project-sea/images/user.png" alt="User">
@@ -48,7 +48,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/sweet_alert.php"
                         <img id="togglePassword" src="/project-sea/images/eyes-closed.png" alt="Toggle Password">
                     </div>
                     <p style="text-align: right; margin-bottom: 16px;"><a
-                            href="/project-sea/pages/forgot-password.php">Lupa Password?</a></p>
+                            href="/project-sea/forgotpassword/">Lupa Password?</a></p>
                     <button type="submit" class="color-button">Masuk</button>
                 </form>
             </div>
@@ -85,8 +85,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['username'] = $row['username'];
 
             ?>
-            <script>location.href = "/project-sea/";</script>
-            <?php
+                        <script>location.href = "/project-sea/";</script>
+                        <?php
         }
 
         //Jika password TIDAK cocok

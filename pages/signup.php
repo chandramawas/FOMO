@@ -32,8 +32,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/sweet_alert.php"
             <div class="form-container">
                 <form action="" method="POST" onsubmit="return validateForm()">
                     <h2>Daftar Akun Baru</h2>
-                    <p style="margin-bottom: 12px;">Sudah mempunyai akun? <a
-                            href="/project-sea/pages/login.php">Masuk</a></p>
+                    <p style="margin-bottom: 12px;">Sudah mempunyai akun? <a href="/project-sea/login/">Masuk</a></p>
                     <div class="input-container">
                         <img class="icon" src="/project-sea/images/email.png" alt="Email">
                         <input type="email" name="email" id="email" placeholder="Email" required>

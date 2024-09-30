@@ -36,8 +36,7 @@ use PHPMailer\PHPMailer\Exception;
             <div class="form-container">
                 <form action="" method="POST">
                     <h2>Lupa Password</h2>
-                    <p style="margin-bottom: 12px;">Belum mempunyai akun? <a
-                            href="/project-sea/pages/login.php">Masuk</a></p>
+                    <p style="margin-bottom: 12px;">Belum mempunyai akun? <a href="/project-sea/login/">Masuk</a></p>
                     <div class="input-container" style="margin-bottom: 16px;">
                         <img class="icon" src="/project-sea/images/email.png" alt="Email">
                         <input type="email" name="email" id="email" placeholder="Email" required>
@@ -91,8 +90,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Content
             $mail->isHTML(true);
             $mail->Subject = 'Password Reset Request';
-            $mail->Body = "Click on the link to reset your password: <a href='localhost/project-sea/pages/reset-password.php?token=$token'>Reset Password</a>";
-            $mail->AltBody = "Copy and paste the following URL to reset your password: localhost/project-sea/pages/reset-password.php?token=$token";
+            $mail->Body = "Click on the link to reset your password: <a href='localhost/project-sea/resetpassword/?token=$token'>Reset Password</a>";
+            $mail->AltBody = "Copy and paste the following URL to reset your password: localhost/project-sea/resetpassword/?token=$token";
 
             $mail->send();
 

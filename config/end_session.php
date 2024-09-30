@@ -19,6 +19,6 @@ if (ini_get("session.use_cookies")) {
 session_destroy();
 
 // Redirect ke login page
-header("Location: /project-sea/pages/login.php");
+header("Location: /project-sea/login/");
 exit();
 ?>

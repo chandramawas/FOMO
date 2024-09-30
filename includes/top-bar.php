@@ -3,7 +3,7 @@
 if (!isset($_SESSION['user_id'])) {
 
     // Jika user BELUM login, akan dialihkan ke halaman login
-    header('Location: /project-sea/pages/login.php');
+    header('Location: /project-sea/login/');
 } //Jika user SUDAH login, maka user bisa mengakses
 
 ?>
