@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/db/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/db.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/time.php";
 require $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/top-bar.php";
@@ -80,8 +80,8 @@ if (isset($_GET["p"])) {
     //Jika id post ada di database
     else {
         ?>
-        <script>alert("Post tidak ditemukan."); location.href = "/project-sea/"</script>
-        <?php
+                <script>alert("Post tidak ditemukan."); location.href = "/project-sea/"</script>
+                <?php
     }
 
 }
@@ -89,8 +89,8 @@ if (isset($_GET["p"])) {
 //Jika TIDAK ada kode " ?p=#id "
 else {
     ?>
-    <script>location.href = "/project-sea/";</script>
-    <?php
+        <script>location.href = "/project-sea/";</script>
+        <?php
 }
 ?>
 
@@ -151,21 +151,21 @@ else {
         </div>
         <div class="comment">
             <?php if (empty($comments)): ?>
-                <h6>Belum ada komentar.</h6>
+                    <h6>Belum ada komentar.</h6>
             <?php else: ?>
-                <?php foreach ($comments as $comment): ?>
-                    <div class="container">
-                        <div class="top">
-                            <a href="/project-sea/u/<?php echo $comment['username'] ?>">
-                                <h5>u/<?php echo $comment['username'] ?>
-                            </a> &#x2022; <h6> <?php echo timestamp($comment['createdAt']) ?></h6>
-                            </h5>
-                        </div>
-                        <div class="mid">
-                            <p><?php echo $comment['comment'] ?></p>
-                        </div>
-                    </div>
-                <?php endforeach ?>
+                    <?php foreach ($comments as $comment): ?>
+                            <div class="container">
+                                <div class="top">
+                                    <a href="/project-sea/u/<?php echo $comment['username'] ?>">
+                                        <h5>u/<?php echo $comment['username'] ?>
+                                    </a> &#x2022; <h6> <?php echo timestamp($comment['createdAt']) ?></h6>
+                                    </h5>
+                                </div>
+                                <div class="mid">
+                                    <p><?php echo $comment['comment'] ?></p>
+                                </div>
+                            </div>
+                    <?php endforeach ?>
             <?php endif ?>
         </div>
     </div>

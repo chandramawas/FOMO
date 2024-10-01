@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/db/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/db.php";
 
 $postId = $_POST['postId'];
 $userId = $_POST['userId'];

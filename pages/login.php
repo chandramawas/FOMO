@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/db/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/db.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/sweet_alert.php";
 ?>
@@ -86,8 +86,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['roles'] = $row['roles'];
 
             ?>
-            <script>location.href = "/project-sea/";</script>
-            <?php
+                        <script>location.href = "/project-sea/";</script>
+                        <?php
         }
 
         //Jika password TIDAK cocok

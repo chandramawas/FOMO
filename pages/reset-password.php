@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/db/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/db.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/config.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/sweet_alert.php";
 ?>
@@ -18,8 +18,8 @@ if (isset($_GET['token'])) {
 
     if ($result->num_rows == 0) {
         ?>
-                <script>alert("Token salah atau sudah kadaluarsa."); location.href = "/project-sea/forgotpassword/";</script>
-                <?php
+                        <script>alert("Token salah atau sudah kadaluarsa."); location.href = "/project-sea/forgotpassword/";</script>
+                        <?php
     } else {
         $row = $result->fetch_assoc();
         $username = $row['username'];
@@ -28,8 +28,8 @@ if (isset($_GET['token'])) {
 } else {
     // Jika TIDAK ada, akan dialihkan ke halaman login
     ?>
-        <script>location.href = "/project-sea/login/";</script>
-        <?php
+            <script>location.href = "/project-sea/login/";</script>
+            <?php
 }
 ?>
 <!DOCTYPE html>
