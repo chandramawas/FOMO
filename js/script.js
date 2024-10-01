@@ -5,8 +5,8 @@ const password = document.getElementById('password');
 const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
 const confirmPassword = document.getElementById('confirmPassword');
 
-const showPasswordIcon = '/FOMO/images/eyes.png';
-const hidePasswordIcon = '/FOMO/images/eyes-closed.png';
+const showPasswordIcon = '/fomo/images/eyes.png';
+const hidePasswordIcon = '/fomo/images/eyes-closed.png';
 
 togglePassword.addEventListener('click', function () {                                          //Untuk toggle ikon password
     const type = password.getAttribute('type') === 'password' ? 'text' : 'password';

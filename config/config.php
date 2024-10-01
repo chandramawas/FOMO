@@ -1,6 +1,6 @@
 <?php
 // Nama situs web
-define('SITE_SHORTNAME', 'FOMO');
+define('SITE_SHORTNAME', 'fomo');
 define('SITE_NAME', 'Forum Masalah Orang-Orang');
 define('SITE_SLOGAN', 'Featured Open-Minded Opinions');
 

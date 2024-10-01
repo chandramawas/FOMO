@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/db.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/config.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/time.php";
-require $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/top-bar.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/side-bar.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/fomo/config/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/fomo/config/config.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/fomo/config/time.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/fomo/includes/top-bar.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/fomo/includes/side-bar.php";
 ?>
 
 <?php
@@ -80,7 +80,7 @@ if (isset($_GET["p"])) {
     //Jika id post ada di database
     else {
         ?>
-        <script>alert("Post tidak ditemukan."); location.href = "/FOMO/"</script>
+        <script>alert("Post tidak ditemukan."); location.href = "/fomo/"</script>
         <?php
     }
 
@@ -89,7 +89,7 @@ if (isset($_GET["p"])) {
 //Jika TIDAK ada kode " ?p=#id "
 else {
     ?>
-    <script>location.href = "/FOMO/";</script>
+    <script>location.href = "/fomo/";</script>
     <?php
 }
 ?>
@@ -102,7 +102,7 @@ else {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/FOMO/style.css">
+    <link rel="stylesheet" href="/fomo/style.css">
     <title>
         <?php echo $p_title ?> -
         <?php echo SITE_SHORTNAME ?>
@@ -113,10 +113,10 @@ else {
     <div class="main">
         <div class="container">
             <div class="top">
-                <a href="/FOMO/circle/<?php echo $p_communityId ?>">
+                <a href="/fomo/circle/<?php echo $p_communityId ?>">
                     <button class="hover-underline">c/<?php echo $p_community ?></button>
                 </a>
-                <a href="/FOMO/u/<?php echo $p_username ?>">
+                <a href="/fomo/u/<?php echo $p_username ?>">
                     <h5>u/<?php echo $p_username ?>
                 </a> &#x2022; <h6> <?php echo $p_timestamp ?></h6>
                 </h5>
@@ -127,7 +127,7 @@ else {
             </div>
             <div class="bot">
                 <div class="vote">
-                    <form id="voteForm" action="/FOMO/config/vote.php" method="post">
+                    <form id="voteForm" action="/fomo/config/vote.php" method="post">
                         <input type="hidden" name="postId" value="<?php echo $p_id ?>">
                         <input type="hidden" name="userId" value="<?php echo $_SESSION['user_id'] ?>">
                         <button type="submit" name="vote" value="1" id="upvote"
@@ -138,7 +138,7 @@ else {
                     </form>
                 </div>
                 <div class="vote">
-                    <img src="/FOMO/images/comment.png" alt="Comment">
+                    <img src="/fomo/images/comment.png" alt="Comment">
                     <p><?php echo $p_totalComments ?> komentar</p>
                 </div>
             </div>
@@ -156,7 +156,7 @@ else {
                 <?php foreach ($comments as $comment): ?>
                     <div class="container">
                         <div class="top">
-                            <a href="/FOMO/u/<?php echo $comment['username'] ?>">
+                            <a href="/fomo/u/<?php echo $comment['username'] ?>">
                                 <h5>u/<?php echo $comment['username'] ?>
                             </a> &#x2022; <h6> <?php echo timestamp($comment['createdAt']) ?></h6>
                             </h5>
@@ -186,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->bind_param('sii', $comment, $userId, $postId);
 
         if ($stmt->execute()) {
-            echo "<script>window.location.href='/FOMO/post/$postId'; </script>";
+            echo "<script>window.location.href='/fomo/post/$postId'; </script>";
         } else {
             echo "<script>alert('Failed to create comment!'); history.back();</script>";
         }

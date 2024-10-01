@@ -1,9 +1,9 @@
 # FOMO
-Selamat datang di FOMO!
+Selamat datang di fomo!
 
-![Logo FOMO](https://via.placeholder.com/468x300?text=Logo+FOMO)
+![Logo FOMO](https://via.placeholder.com/468x300?text=Logo+fomo)
 
-FOMO adalah sebuah website forum yang dirancang untuk memfasilitasi diskusi dan keterlibatan komunitas di antara pengguna.
+Fomo adalah sebuah website forum yang dirancang untuk memfasilitasi diskusi dan keterlibatan komunitas di antara pengguna.
 
 ## Features
 

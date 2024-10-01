@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/db.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/config.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/time.php";
-require $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/top-bar.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/side-bar.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/fomo/config/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/fomo/config/config.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/fomo/config/time.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/fomo/includes/top-bar.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/fomo/includes/side-bar.php";
 ?>
 
 <?php
@@ -57,7 +57,7 @@ $posts = $result->fetch_all(MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/FOMO/style.css">
+    <link rel="stylesheet" href="/fomo/style.css">
     <title>
         <?php echo SITE_NAME ?> -
         <?php echo SITE_SHORTNAME ?>
@@ -69,22 +69,22 @@ $posts = $result->fetch_all(MYSQLI_ASSOC);
         <?php foreach ($posts as $post): ?>
             <div class="container">
                 <div class="top">
-                    <a href="/FOMO/circle/<?php echo $post['communityId'] ?>">
+                    <a href="/fomo/circle/<?php echo $post['communityId'] ?>">
                         <button class="hover-underline">c/<?php echo $post['community'] ?></button>
                     </a>
-                    <a href="/FOMO/u/<?php echo $post['username'] ?>">
+                    <a href="/fomo/u/<?php echo $post['username'] ?>">
                         <h5>u/<?php echo $post['username'] ?>
                     </a> &#x2022; <h6> <?php echo timestamp($post['createdAt']) ?></h6>
                     </h5>
                 </div>
-                <a href="/FOMO/post/<?php echo $post['id'] ?>">
+                <a href="/fomo/post/<?php echo $post['id'] ?>">
                     <div class="mid">
                         <h2><?php echo $post['title'] ?></h2>
                     </div>
                 </a>
                 <div class="bot">
                     <div class="vote">
-                        <form id="voteForm" action="/FOMO/config/vote.php" method="post">
+                        <form id="voteForm" action="/fomo/config/vote.php" method="post">
                             <input type="hidden" name="postId" value="<?php echo $post['id'] ?>">
                             <input type="hidden" name="userId" value="<?php echo $_SESSION['user_id'] ?>">
                             <button type="submit" name="vote" value="1" id="upvote"
@@ -95,7 +95,7 @@ $posts = $result->fetch_all(MYSQLI_ASSOC);
                         </form>
                     </div>
                     <div class="vote">
-                        <img src="/FOMO/images/comment.png" alt="Comment">
+                        <img src="/fomo/images/comment.png" alt="Comment">
                         <p><?php echo $post['total_comments'] ?> komentar</p>
                     </div>
                 </div>

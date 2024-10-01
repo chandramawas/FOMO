@@ -1,9 +1,9 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/db.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/config.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/sweet_alert.php";
-require $_SERVER['DOCUMENT_ROOT'] . "/FOMO/vendor/autoload.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/fomo/config/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/fomo/config/config.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/fomo/includes/sweet_alert.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/fomo/vendor/autoload.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
@@ -17,7 +17,7 @@ use PHPMailer\PHPMailer\Exception;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/FOMO/css/start.css">
+    <link rel="stylesheet" href="/fomo/css/start.css">
     <title>
         Lupa Password -
         <?php echo SITE_SHORTNAME ?>
@@ -27,7 +27,7 @@ use PHPMailer\PHPMailer\Exception;
 <body>
     <div class="container">
         <div class="left">
-            <img src="/FOMO/images/poster.png">
+            <img src="/fomo/images/poster.png">
         </div>
         <div class="right">
             <div class="logo">
@@ -36,9 +36,9 @@ use PHPMailer\PHPMailer\Exception;
             <div class="form-container">
                 <form action="" method="POST">
                     <h2>Lupa Password</h2>
-                    <p style="margin-bottom: 12px;">Belum mempunyai akun? <a href="/FOMO/login/">Masuk</a></p>
+                    <p style="margin-bottom: 12px;">Belum mempunyai akun? <a href="/fomo/login/">Masuk</a></p>
                     <div class="input-container" style="margin-bottom: 16px;">
-                        <img class="icon" src="/FOMO/images/email.png" alt="Email">
+                        <img class="icon" src="/fomo/images/email.png" alt="Email">
                         <input type="email" name="email" id="email" placeholder="Email" required>
                     </div>
                     <button type="submit" class="color-button">Kirim Email</button>
@@ -84,14 +84,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $mail->Port = 587;
 
             //Recipients
-            $mail->setFrom('chandramawastore@gmail.com', 'FOMO');
+            $mail->setFrom('chandramawastore@gmail.com', 'fomo');
             $mail->addAddress($email);
 
             // Content
             $mail->isHTML(true);
             $mail->Subject = 'Password Reset Request';
-            $mail->Body = "Click on the link to reset your password: <a href='localhost/FOMO/resetpassword/?token=$token'>Reset Password</a>";
-            $mail->AltBody = "Copy and paste the following URL to reset your password: localhost/FOMO/resetpassword/?token=$token";
+            $mail->Body = "Click on the link to reset your password: <a href='localhost/fomo/resetpassword/?token=$token'>Reset Password</a>";
+            $mail->AltBody = "Copy and paste the following URL to reset your password: localhost/fomo/resetpassword/?token=$token";
 
             $mail->send();
 

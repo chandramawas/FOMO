@@ -405,25 +405,25 @@ h6 {
 }
 
 #upvote {
-    background: url(/FOMO/images/upvote.png) no-repeat left;
+    background: url(/fomo/images/upvote.png) no-repeat left;
     background-size: 20px;
     background-position: 50%;
 }
 
 #upvote.active {
-    background: url(/FOMO/images/upvote-active.png) no-repeat left;
+    background: url(/fomo/images/upvote-active.png) no-repeat left;
     background-size: 20px;
     background-position: 50%;
 }
 
 #downvote {
-    background: url(/FOMO/images/downvote.png) no-repeat left;
+    background: url(/fomo/images/downvote.png) no-repeat left;
     background-size: 20px;
     background-position: 50%;
 }
 
 #downvote.active {
-    background: url(/FOMO/images/downvote-active.png) no-repeat left;
+    background: url(/fomo/images/downvote-active.png) no-repeat left;
     background-size: 20px;
     background-position: 50%;
 }
@@ -607,7 +607,7 @@ h6 {
     padding: 8px 16px;
     width: 100%;
     margin-bottom: 8px;
-    background-image: url(/FOMO/images/right.png);
+    background-image: url(/fomo/images/right.png);
     background-size: 40px;
     background-repeat: no-repeat;
     background-position: calc(100% - 12px) center;
@@ -615,7 +615,7 @@ h6 {
 
 .search-container:hover {
     border: 1px solid var(--accent-500);
-    background-image: url(/FOMO/images/right-filled.png);
+    background-image: url(/fomo/images/right-filled.png);
     cursor: pointer;
 }
 

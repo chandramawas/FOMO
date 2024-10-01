@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/fomo/config/db.php";
 
 $postId = $_POST['postId'];
 $userId = $_POST['userId'];

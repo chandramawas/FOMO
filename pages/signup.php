@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/db.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/config.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/sweet_alert.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/fomo/config/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/fomo/config/config.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/fomo/includes/sweet_alert.php";
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/sweet_alert.php";
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/FOMO/css/start.css">
+    <link rel="stylesheet" href="/fomo/css/start.css">
     <title>
         Buat Akun -
         <?php echo SITE_SHORTNAME ?>
@@ -23,7 +23,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/sweet_alert.php";
 <body>
     <div class="container">
         <div class="left">
-            <img src="/FOMO/images/poster.png">
+            <img src="/fomo/images/poster.png">
         </div>
         <div class="right">
             <div class="logo">
@@ -32,29 +32,29 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/sweet_alert.php";
             <div class="form-container">
                 <form action="" method="POST" onsubmit="return validateForm()">
                     <h2>Daftar Akun Baru</h2>
-                    <p style="margin-bottom: 12px;">Sudah mempunyai akun? <a href="/FOMO/login/">Masuk</a></p>
+                    <p style="margin-bottom: 12px;">Sudah mempunyai akun? <a href="/fomo/login/">Masuk</a></p>
                     <div class="input-container">
-                        <img class="icon" src="/FOMO/images/email.png" alt="Email">
+                        <img class="icon" src="/fomo/images/email.png" alt="Email">
                         <input type="email" name="email" id="email" placeholder="Email" required>
                     </div>
                     <div class="input-container">
-                        <img class="icon" src="/FOMO/images/user.png" alt="User">
+                        <img class="icon" src="/fomo/images/user.png" alt="User">
                         <input type="text" name="username" id="username" placeholder="Buat Username"
                             oninput="this.value = this.value.replace(/\s/g, '');" required>
                     </div>
                     <div class="input-container">
-                        <img class="icon" src="/FOMO/images/password.png" alt="Password">
+                        <img class="icon" src="/fomo/images/password.png" alt="Password">
                         <input type="password" name="password" id="password" placeholder="Buat Password"
                             minlength="<?php echo MIN_PASSWORD_LENGTH ?>" maxlength="<?php echo MAX_PASSWORD_LENGTH ?>"
                             required>
-                        <img id="togglePassword" src="/FOMO/images/eyes-closed.png" alt="Toggle Password">
+                        <img id="togglePassword" src="/fomo/images/eyes-closed.png" alt="Toggle Password">
                     </div>
                     <div class="input-container" style="margin-bottom: 16px;">
-                        <img class="icon" src="/FOMO/images/password.png" alt="Password">
+                        <img class="icon" src="/fomo/images/password.png" alt="Password">
                         <input type="password" name="confirmPassword" id="confirmPassword"
                             placeholder="Konfirmasi Password" minlength="<?php echo MIN_PASSWORD_LENGTH ?>"
                             maxlength="<?php echo MAX_PASSWORD_LENGTH ?>" required>
-                        <img id="toggleConfirmPassword" src="/FOMO/images/eyes-closed.png" alt="Toggle Password">
+                        <img id="toggleConfirmPassword" src="/fomo/images/eyes-closed.png" alt="Toggle Password">
                     </div>
                     <button type="submit" class="color-button">Buat Akun</button>
                 </form>
@@ -62,7 +62,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/sweet_alert.php";
         </div>
     </div>
 
-    <script src="/FOMO/js/script.js"></script>
+    <script src="/fomo/js/script.js"></script>
 </body>
 
 </html>
