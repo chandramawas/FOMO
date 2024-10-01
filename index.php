@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/db.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/config.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/time.php";
-require $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/top-bar.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/side-bar.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/config.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/time.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/top-bar.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/side-bar.php";
 ?>
 
 <?php
@@ -57,7 +57,7 @@ $posts = $result->fetch_all(MYSQLI_ASSOC);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/project-sea/style.css">
+    <link rel="stylesheet" href="/FOMO/style.css">
     <title>
         <?php echo SITE_NAME ?> -
         <?php echo SITE_SHORTNAME ?>
@@ -67,39 +67,39 @@ $posts = $result->fetch_all(MYSQLI_ASSOC);
 <body>
     <div class="main">
         <?php foreach ($posts as $post): ?>
-                <div class="container">
-                    <div class="top">
-                        <a href="/project-sea/circle/<?php echo $post['communityId'] ?>">
-                            <button class="hover-underline">c/<?php echo $post['community'] ?></button>
-                        </a>
-                        <a href="/project-sea/u/<?php echo $post['username'] ?>">
-                            <h5>u/<?php echo $post['username'] ?>
-                        </a> &#x2022; <h6> <?php echo timestamp($post['createdAt']) ?></h6>
-                        </h5>
-                    </div>
-                    <a href="/project-sea/post/<?php echo $post['id'] ?>">
-                        <div class="mid">
-                            <h2><?php echo $post['title'] ?></h2>
-                        </div>
+            <div class="container">
+                <div class="top">
+                    <a href="/FOMO/circle/<?php echo $post['communityId'] ?>">
+                        <button class="hover-underline">c/<?php echo $post['community'] ?></button>
                     </a>
-                    <div class="bot">
-                        <div class="vote">
-                            <form id="voteForm" action="/project-sea/config/vote.php" method="post">
-                                <input type="hidden" name="postId" value="<?php echo $post['id'] ?>">
-                                <input type="hidden" name="userId" value="<?php echo $_SESSION['user_id'] ?>">
-                                <button type="submit" name="vote" value="1" id="upvote"
-                                    class="<?php echo ($post['user_vote'] == 1) ? 'active' : ''; ?>"></button>
-                                <p><?php echo $post['total_votes'] ?></p>
-                                <button type="submit" name="vote" value="-1" id="downvote"
-                                    class="<?php echo ($post['user_vote'] == -1) ? 'active' : ''; ?>"></button>
-                            </form>
-                        </div>
-                        <div class="vote">
-                            <img src="/project-sea/images/comment.png" alt="Comment">
-                            <p><?php echo $post['total_comments'] ?> komentar</p>
-                        </div>
+                    <a href="/FOMO/u/<?php echo $post['username'] ?>">
+                        <h5>u/<?php echo $post['username'] ?>
+                    </a> &#x2022; <h6> <?php echo timestamp($post['createdAt']) ?></h6>
+                    </h5>
+                </div>
+                <a href="/FOMO/post/<?php echo $post['id'] ?>">
+                    <div class="mid">
+                        <h2><?php echo $post['title'] ?></h2>
+                    </div>
+                </a>
+                <div class="bot">
+                    <div class="vote">
+                        <form id="voteForm" action="/FOMO/config/vote.php" method="post">
+                            <input type="hidden" name="postId" value="<?php echo $post['id'] ?>">
+                            <input type="hidden" name="userId" value="<?php echo $_SESSION['user_id'] ?>">
+                            <button type="submit" name="vote" value="1" id="upvote"
+                                class="<?php echo ($post['user_vote'] == 1) ? 'active' : ''; ?>"></button>
+                            <p><?php echo $post['total_votes'] ?></p>
+                            <button type="submit" name="vote" value="-1" id="downvote"
+                                class="<?php echo ($post['user_vote'] == -1) ? 'active' : ''; ?>"></button>
+                        </form>
+                    </div>
+                    <div class="vote">
+                        <img src="/FOMO/images/comment.png" alt="Comment">
+                        <p><?php echo $post['total_comments'] ?> komentar</p>
                     </div>
                 </div>
+            </div>
         <?php endforeach ?>
     </div>
 </body>

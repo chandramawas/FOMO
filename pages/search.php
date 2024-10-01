@@ -1,10 +1,10 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/db.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/config.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/time.php";
-require $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/top-bar.php";
-include $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/side-bar.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/config.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/time.php";
+require $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/top-bar.php";
+include $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/side-bar.php";
 ?>
 
 <?php
@@ -118,7 +118,7 @@ if (isset($_GET["s"])) {
 //Jika ada kode " ?s=# "
 else {
     ?>
-    <script>location.href = "/project-sea/";</script>
+    <script>location.href = "/FOMO/";</script>
     <?php
 }
 ?>
@@ -131,7 +131,7 @@ else {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/project-sea/style.css">
+    <link rel="stylesheet" href="/FOMO/style.css">
     <title>
         <?php echo $search ?> -
         <?php echo SITE_SHORTNAME ?>
@@ -152,7 +152,7 @@ else {
                 <h6>Circle tidak ditemukan.</h6>
             <?php else: ?>
                 <?php foreach ($circles as $circle): ?>
-                    <a href="/project-sea/circle/<?php echo $circle['id'] ?>">
+                    <a href="/FOMO/circle/<?php echo $circle['id'] ?>">
                         <div class="search-container">
                             <h3><?php echo $circle['name'] ?></h3>
                             <p>Sejak <?php echo $circle['date'] ?> • <?php echo $circle['total_posts'] ?> postingan dari
@@ -169,7 +169,7 @@ else {
                 <h6>User tidak ditemukan.</h6>
             <?php else: ?>
                 <?php foreach ($users as $user): ?>
-                    <a href="/project-sea/u/<?php echo $user['username'] ?>">
+                    <a href="/FOMO/u/<?php echo $user['username'] ?>">
                         <div class="search-container">
                             <h3><?php echo $user['username'] ?></h3>
                             <p>Sejak <?php echo $user['date'] ?> • <?php echo $user['total_posts'] ?> postingan •
@@ -187,22 +187,22 @@ else {
                 <?php foreach ($posts as $post): ?>
                     <div class=" container">
                         <div class="top">
-                            <a href="/project-sea/circle/<?php echo $post['communityId'] ?>">
+                            <a href="/FOMO/circle/<?php echo $post['communityId'] ?>">
                                 <button class="hover-underline">c/<?php echo $post['community'] ?></button>
                             </a>
-                            <a href="/project-sea/u/<?php echo $post['username'] ?>">
+                            <a href="/FOMO/u/<?php echo $post['username'] ?>">
                                 <h5>u/<?php echo $post['username'] ?>
                             </a> &#x2022; <h6> <?php echo timestamp($post['createdAt']) ?></h6>
                             </h5>
                         </div>
-                        <a href="/project-sea/post/<?php echo $post['id'] ?>">
+                        <a href="/FOMO/post/<?php echo $post['id'] ?>">
                             <div class="mid">
                                 <h2><?php echo $post['title'] ?></h2>
                             </div>
                         </a>
                         <div class="bot">
                             <div class="vote">
-                                <form id="voteForm" action="/project-sea/config/vote.php" method="post">
+                                <form id="voteForm" action="/FOMO/config/vote.php" method="post">
                                     <input type="hidden" name="postId" value="<?php echo $post['id'] ?>">
                                     <input type="hidden" name="userId" value="<?php echo $_SESSION['user_id'] ?>">
                                     <button type="submit" name="vote" value="1" id="upvote"
@@ -213,7 +213,7 @@ else {
                                 </form>
                             </div>
                             <div class="vote">
-                                <img src="/project-sea/images/comment.png" alt="Comment">
+                                <img src="/FOMO/images/comment.png" alt="Comment">
                                 <p><?php echo $post['total_comments'] ?> komentar</p>
                             </div>
                         </div>

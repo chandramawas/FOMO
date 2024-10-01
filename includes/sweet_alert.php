@@ -12,7 +12,7 @@
             cancelButtonText: "Kembali"
         }).then((result) => {
             if (result.isConfirmed) {
-                location.href = "/project-sea/signup/";
+                location.href = "/FOMO/signup/";
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 history.back();
             }
@@ -30,7 +30,7 @@
             cancelButtonText: "Kembali"
         }).then((result) => {
             if (result.isConfirmed) {
-                location.href = "/project-sea/forgotpassword/";
+                location.href = "/FOMO/forgotpassword/";
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 history.back();
             }
@@ -48,7 +48,7 @@
             cancelButtonText: "Kembali"
         }).then((result) => {
             if (result.isConfirmed) {
-                location.href = "/project-sea/login/";
+                location.href = "/FOMO/login/";
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 history.back();
             }
@@ -66,7 +66,7 @@
             cancelButtonText: "Kembali"
         }).then((result) => {
             if (result.isConfirmed) {
-                location.href = "/project-sea/login/";
+                location.href = "/FOMO/login/";
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 history.back();
             }
@@ -83,7 +83,7 @@
             timerProgressBar: true
         }).then((result) => {
             if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
-                location.href = "/project-sea/login/";
+                location.href = "/FOMO/login/";
             }
         });
     }
@@ -117,7 +117,7 @@
             cancelButtonText: "Kembali"
         }).then((result) => {
             if (result.isConfirmed) {
-                location.href = "/project-sea/signup/";
+                location.href = "/FOMO/signup/";
             } else if (result.dismiss === Swal.DismissReason.cancel) {
                 history.back();
             }
@@ -134,7 +134,7 @@
             timerProgressBar: true
         }).then((result) => {
             if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
-                location.href = "/project-sea/login/";
+                location.href = "/FOMO/login/";
             }
         });
     }
@@ -182,7 +182,7 @@
             timerProgressBar: true
         }).then((result) => {
             if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
-                location.href = "/project-sea/circle/" + id;
+                location.href = "/FOMO/circle/" + id;
             }
         });
     }
@@ -266,7 +266,7 @@
             timerProgressBar: true
         }).then((result) => {
             if (result.isConfirmed || result.dismiss === Swal.DismissReason.timer) {
-                location.href = "/project-sea/";
+                location.href = "/FOMO/";
             }
         });
     }

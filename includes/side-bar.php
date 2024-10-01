@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/sweet_alert.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/sweet_alert.php";
 
 //Top posts berdasarkan total vote+comment yang dibuat dalam seminggu terakhir 
 $stmt = $conn->prepare("
@@ -99,9 +99,9 @@ $topUsers = $result->fetch_all(MYSQLI_ASSOC);
         ?>
         <div class="container">
             <h4>Akun Saya</h4>
-            <a href="/project-sea/u/<?php echo $_SESSION['username'] ?>">
+            <a href="/FOMO/u/<?php echo $_SESSION['username'] ?>">
                 <div class="user">
-                    <img src="/project-sea/images/profile-blue.png" alt="Profile">
+                    <img src="/FOMO/images/profile-blue.png" alt="Profile">
                     <h3><?php echo $_SESSION['username'] ?></h3>
                 </div>
             </a>
@@ -153,7 +153,7 @@ $topUsers = $result->fetch_all(MYSQLI_ASSOC);
         <div class="container">
             <h4>Masalah Rame-Rame</h4>
             <?php foreach ($topPosts as $topPost): ?>
-                <a href="/project-sea/post/<?php echo $topPost['id'] ?>">
+                <a href="/FOMO/post/<?php echo $topPost['id'] ?>">
                     <div class="side-content">
                         <h5><?php echo $topPost['title'] ?></h5>
                         <p><?php echo $topPost['total_votes'] ?> aura • <?php echo $topPost['total_comments'] ?> komentar</p>
@@ -177,7 +177,7 @@ $topUsers = $result->fetch_all(MYSQLI_ASSOC);
         <div class="container">
             <h4>Circle Paling Berisik</h4>
             <?php foreach ($topCircles as $topCircle): ?>
-                <a href="/project-sea/circle/<?php echo $topCircle['id'] ?>">
+                <a href="/FOMO/circle/<?php echo $topCircle['id'] ?>">
                     <div class="side-content">
                         <h5><?php echo $topCircle['name'] ?></h5>
                         <p><?php echo $topCircle['total_posts'] ?> Postingan</p>
@@ -192,7 +192,7 @@ $topUsers = $result->fetch_all(MYSQLI_ASSOC);
         <div class="container">
             <h4>Orang Paling FOMO</h4>
             <?php foreach ($topUsers as $topUser): ?>
-                <a href="/project-sea/u/<?php echo $topUser['username'] ?>">
+                <a href="/FOMO/u/<?php echo $topUser['username'] ?>">
                     <div class="side-content">
                         <h5><?php echo $topUser['username'] ?></h5>
                         <p><?php echo $topUser['total_posts'] ?> postingan • <?php echo $topUser['total_votes'] ?> aura</p>
@@ -242,7 +242,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bind_param('s', $id);
             $stmt->execute();
 
-            echo '<script>alert("Berhasil Menghapus User ' . $id . '"); location.href = "/project-sea/";</script>';
+            echo '<script>alert("Berhasil Menghapus User ' . $id . '"); location.href = "/FOMO/";</script>';
         } else {
             echo '<script>deleteError()</script>';
         }
@@ -261,7 +261,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bind_param('i', $id);
             $stmt->execute();
 
-            echo '<script>alert("Berhasil Menghapus Circle ' . $cname . '"); location.href = "/project-sea/";</script>';
+            echo '<script>alert("Berhasil Menghapus Circle ' . $cname . '"); location.href = "/FOMO/";</script>';
         } else {
             echo '<script>deleteError()</script>';
         }
@@ -280,7 +280,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bind_param('i', $id);
             $stmt->execute();
 
-            echo '<script>alert("Berhasil Menghapus Post"); location.href = "/project-sea/";</script>';
+            echo '<script>alert("Berhasil Menghapus Post"); location.href = "/FOMO/";</script>';
         } else {
             echo '<script>deleteError()</script>';
         }

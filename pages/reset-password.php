@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/db.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/config.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/sweet_alert.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/config.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/sweet_alert.php";
 ?>
 
 <?php
@@ -18,8 +18,8 @@ if (isset($_GET['token'])) {
 
     if ($result->num_rows == 0) {
         ?>
-                        <script>alert("Token salah atau sudah kadaluarsa."); location.href = "/project-sea/forgotpassword/";</script>
-                        <?php
+        <script>alert("Token salah atau sudah kadaluarsa."); location.href = "/FOMO/forgotpassword/";</script>
+        <?php
     } else {
         $row = $result->fetch_assoc();
         $username = $row['username'];
@@ -28,8 +28,8 @@ if (isset($_GET['token'])) {
 } else {
     // Jika TIDAK ada, akan dialihkan ke halaman login
     ?>
-            <script>location.href = "/project-sea/login/";</script>
-            <?php
+    <script>location.href = "/FOMO/login/";</script>
+    <?php
 }
 ?>
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ if (isset($_GET['token'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/project-sea/css/start.css">
+    <link rel="stylesheet" href="/FOMO/css/start.css">
     <title>
         Reset Password -
         <?php echo SITE_SHORTNAME ?>
@@ -50,7 +50,7 @@ if (isset($_GET['token'])) {
 <body>
     <div class="container">
         <div class="left">
-            <img src="/project-sea/images/poster.png">
+            <img src="/FOMO/images/poster.png">
         </div>
         <div class="right">
             <div class="logo">
@@ -62,23 +62,23 @@ if (isset($_GET['token'])) {
                     <input type="hidden" name="token" id="token"
                         value="<?php echo htmlspecialchars($_GET['token']); ?>">
                     <div class="input-container read">
-                        <img class="icon" src="/project-sea/images/user.png" alt="User">
+                        <img class="icon" src="/FOMO/images/user.png" alt="User">
                         <input type="text" name="username" id="username" placeholder="Username"
                             value="<?php echo $username ?>" readonly>
                     </div>
                     <div class="input-container">
-                        <img class="icon" src="/project-sea/images/password.png" alt="Password">
+                        <img class="icon" src="/FOMO/images/password.png" alt="Password">
                         <input type="password" name="password" id="password" placeholder="Buat Password Baru"
                             minlength="<?php echo MIN_PASSWORD_LENGTH ?>" maxlength="<?php echo MAX_PASSWORD_LENGTH ?>"
                             required>
-                        <img id="togglePassword" src="/project-sea/images/eyes-closed.png" alt="Toggle Password">
+                        <img id="togglePassword" src="/FOMO/images/eyes-closed.png" alt="Toggle Password">
                     </div>
                     <div class="input-container" style="margin-bottom: 16px;">
-                        <img class="icon" src="/project-sea/images/password.png" alt="Password">
+                        <img class="icon" src="/FOMO/images/password.png" alt="Password">
                         <input type="password" name="confirmPassword" id="confirmPassword"
                             placeholder="Konfirmasi Password Baru" minlength="<?php echo MIN_PASSWORD_LENGTH ?>"
                             maxlength="<?php echo MAX_PASSWORD_LENGTH ?>" required>
-                        <img id="toggleConfirmPassword" src="/project-sea/images/eyes-closed.png" alt="Toggle Password">
+                        <img id="toggleConfirmPassword" src="/FOMO/images/eyes-closed.png" alt="Toggle Password">
                     </div>
                     <button type="submit" class="color-button">Ubah Password</button>
                 </form>
@@ -86,7 +86,7 @@ if (isset($_GET['token'])) {
         </div>
     </div>
 
-    <script src="/project-sea/js/script.js"></script>
+    <script src="/FOMO/js/script.js"></script>
 </body>
 
 </html>

@@ -1,5 +1,5 @@
 RewriteEngine On
-RewriteBase /project-sea/
+RewriteBase /FOMO/
 
 # Rewrite URL
 # /pages/post.php?p=1 menjadi /post/1

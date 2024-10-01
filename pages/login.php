@@ -1,8 +1,8 @@
 <?php
 session_start();
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/db.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/config/config.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/sweet_alert.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/db.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/config/config.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/FOMO/includes/sweet_alert.php";
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/sweet_alert.php"
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Reddit+Sans:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="/project-sea/css/start.css">
+    <link rel="stylesheet" href="/FOMO/css/start.css">
     <title>
         Masuk -
         <?php echo SITE_SHORTNAME ?>
@@ -23,7 +23,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/sweet_alert.php"
 <body>
     <div class="container">
         <div class="left">
-            <img src="/project-sea/images/poster.png">
+            <img src="/FOMO/images/poster.png">
         </div>
         <div class="right">
             <div class="logo">
@@ -32,22 +32,22 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/sweet_alert.php"
             <div class="form-container">
                 <form action="" method="POST">
                     <h2>Masuk</h2>
-                    <p style="margin-bottom: 12px;">Belum mempunyai akun? <a href="/project-sea/signup/">Buat
+                    <p style="margin-bottom: 12px;">Belum mempunyai akun? <a href="/FOMO/signup/">Buat
                             akun</a></p>
                     <div class="input-container">
-                        <img class="icon" src="/project-sea/images/user.png" alt="User">
+                        <img class="icon" src="/FOMO/images/user.png" alt="User">
                         <input type="text" name="username" id="username" placeholder="Username"
                             minlength="<?php echo MIN_USERNAME_LENGTH ?>" maxlength="<?php echo MAX_USERNAME_LENGTH ?>"
                             oninput="this.value = this.value.replace(/\s/g, '');" required>
                     </div>
                     <div class="input-container" style="margin-bottom: 4px;">
-                        <img class="icon" src="/project-sea/images/password.png" alt="Password">
+                        <img class="icon" src="/FOMO/images/password.png" alt="Password">
                         <input type="password" name="password" id="password" placeholder="Password"
                             minlength="<?php echo MIN_PASSWORD_LENGTH ?>" maxlength="<?php echo MAX_PASSWORD_LENGTH ?>"
                             required>
-                        <img id="togglePassword" src="/project-sea/images/eyes-closed.png" alt="Toggle Password">
+                        <img id="togglePassword" src="/FOMO/images/eyes-closed.png" alt="Toggle Password">
                     </div>
-                    <p style="text-align: right; margin-bottom: 16px;"><a href="/project-sea/forgotpassword/">Lupa
+                    <p style="text-align: right; margin-bottom: 16px;"><a href="/FOMO/forgotpassword/">Lupa
                             Password?</a></p>
                     <button type="submit" class="color-button">Masuk</button>
                 </form>
@@ -55,7 +55,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/project-sea/includes/sweet_alert.php"
         </div>
     </div>
 
-    <script src="/project-sea/js/script.js"></script>
+    <script src="/FOMO/js/script.js"></script>
 </body>
 
 </html>
@@ -86,8 +86,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['roles'] = $row['roles'];
 
             ?>
-                        <script>location.href = "/project-sea/";</script>
-                        <?php
+            <script>location.href = "/FOMO/";</script>
+            <?php
         }
 
         //Jika password TIDAK cocok
