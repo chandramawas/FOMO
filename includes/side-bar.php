@@ -31,7 +31,9 @@ LEFT JOIN (
     WHERE createdAt >= DATE_SUB(NOW(), INTERVAL 1 WEEK)
     GROUP BY postId
 ) AS recent_vote_counts ON recent_vote_counts.postId = posts.id
-ORDER BY IFNULL(recent_comment_counts.recent_comments, 0) + IFNULL(recent_vote_counts.recent_votes, 0) DESC
+WHERE IFNULL(vote_counts.total_votes, 0) > 0
+OR IFNULL(comment_counts.total_comments, 0) > 0
+ORDER BY (total_comments + total_votes) DESC
 LIMIT 5;
 ");
 $stmt->execute();
@@ -56,7 +58,8 @@ LEFT JOIN (
     WHERE createdAt >= NOW() - INTERVAL 7 DAY
     GROUP BY communityId
 ) AS recent_posts_count ON recent_posts_count.communityId = communities.id
-ORDER BY IFNULL(recent_posts_count.recent_posts, 0) DESC, total_posts DESC
+WHERE IFNULL(posts_count.total_posts, 0) > 0
+ORDER BY total_posts DESC, total_posts DESC
 LIMIT 5;
 ");
 $stmt->execute();

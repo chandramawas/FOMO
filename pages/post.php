@@ -67,7 +67,7 @@ if (isset($_GET["p"])) {
         FROM comments
         JOIN users ON users.id = comments.userId
         WHERE postId = ?
-        ORDER BY createdAt DESC;
+        ORDER BY createdAt;
         ');
         $stmt->bind_param('i', $p_id);
         $stmt->execute();

@@ -72,7 +72,7 @@ $posts = $result->fetch_all(MYSQLI_ASSOC);
                     <a href="/project-sea/circle/<?php echo $post['communityId'] ?>">
                         <button class="hover-underline">c/<?php echo $post['community'] ?></button>
                     </a>
-                    <a href="/project-sea/<?php echo $post['username'] ?>">
+                    <a href="/project-sea/u/<?php echo $post['username'] ?>">
                         <h5>u/<?php echo $post['username'] ?>
                     </a> &#x2022; <h6> <?php echo timestamp($post['createdAt']) ?></h6>
                     </h5>
