@@ -177,13 +177,6 @@ else {
                 <?php endif ?>
             </div>
             <div class="info">
-                <div class="info-container">
-                    <h5>Pembuat</h5>
-                    <a href="/fomo/u/<?php echo $c_creator ?>">
-                        <p><?php echo $c_creator ?></p>
-                    </a>
-                </div>
-
                 <button class="color-button" style="margin-bottom: 12px;"
                     onclick="createPost('<?php echo $c_name ?>')">Buat Post</button>
                 <form id="postForm" action="" method="POST" style="display:none;">
@@ -191,6 +184,13 @@ else {
                     <input type="hidden" name="postTitle" id="postTitle">
                     <input type="hidden" name="postContent" id="postContent">
                 </form>
+
+                <div class="info-container">
+                    <h5>Pembuat</h5>
+                    <a href="/fomo/u/<?php echo $c_creator ?>">
+                        <p><?php echo $c_creator ?></p>
+                    </a>
+                </div>
 
                 <div class="info-container">
                     <h5>Deskripsi</h5>

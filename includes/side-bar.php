@@ -93,8 +93,9 @@ $stmt->execute();
 $result = $stmt->get_result();
 $topUsers = $result->fetch_all(MYSQLI_ASSOC);
 ?>
+<button id="toggleSidebar" class="toggle-btn">☰</button>
 
-<div class="side-bar">
+<div id="sidebar" class="side-bar">
     <?php if (!isset($_GET['u']) || $_GET['u'] !== $_SESSION['username']) {
         ?>
         <div class="container">
@@ -148,6 +149,15 @@ $topUsers = $result->fetch_all(MYSQLI_ASSOC);
         <?php } ?>
     <?php } ?>
 
+    <div class="side-button">
+        <button class="hover-blue" onclick="createCircle()">Buat Circle Baru</button>
+        <form id="circleForm" action="" method="POST" style="display:none;">
+            <input type="hidden" name="form_type" value="createCircle">
+            <input type="hidden" name="circleName" id="circleName">
+            <input type="hidden" name="circleDescription" id="circleDescription">
+        </form>
+    </div>
+
     <?php if (empty($topPosts)): ?>
     <?php else: ?>
         <div class="container">
@@ -162,15 +172,6 @@ $topUsers = $result->fetch_all(MYSQLI_ASSOC);
             <?php endforeach ?>
         </div>
     <?php endif ?>
-
-    <div class="side-button">
-        <button class="hover-blue" onclick="createCircle()">Buat Circle Baru</button>
-        <form id="circleForm" action="" method="POST" style="display:none;">
-            <input type="hidden" name="form_type" value="createCircle">
-            <input type="hidden" name="circleName" id="circleName">
-            <input type="hidden" name="circleDescription" id="circleDescription">
-        </form>
-    </div>
 
     <?php if (empty($topCircles)): ?>
     <?php else: ?>
@@ -202,6 +203,16 @@ $topUsers = $result->fetch_all(MYSQLI_ASSOC);
         </div>
     <?php endif ?>
 </div>
+
+<script>
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('open'); // Toggles the 'open' class on the sidebar
+    }
+
+    // Adding the click event listener to the button
+    document.getElementById('toggleSidebar').addEventListener('click', toggleSidebar);
+</script>
 
 <?php
 //REQUEST POST BUAT CIRCLE
